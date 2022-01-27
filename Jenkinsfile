@@ -1,22 +1,30 @@
-pipeline{
-    agent any
-    stages{
-        stage('Git clone'){
-            steps{
-                git 'https://github.com/shazforiot/HelloWorld-Springboot-App.git'
+pipeline {
+    agent any 
+    stages {
+        stage('Git clone') { 
+            steps {
+                git 'https://github.com/adityanaidu20690/HelloWorld-Springboot-App.git'
             }
         }
-        
-        stage('maven build'){
-            steps{
+        stage('maven clean') { 
+            steps {
+                sh 'mvn clean'
+            }
+        }
+        stage('maven package') { 
+            steps {
                 sh 'mvn package'
             }
         }
-        stage('Create Dockerimage'){
-            steps{
-                sh 'docker build -t thetips4you/springboot:latest .'
+        stage('maven test') { 
+            steps {
+                sh 'mvn test'
             }
         }
-        
+        stage('Notify') { 
+            steps {
+                sh 'echo "final step"'
+            }
+        }
     }
 }
