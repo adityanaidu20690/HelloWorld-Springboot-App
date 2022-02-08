@@ -21,6 +21,11 @@ pipeline {
                 sh 'mvn test'
             }
         }
+        stage('Archive') { 
+           steps {
+              archiveArtifacts artifacts: 'target/*.jar, target/*.war', followSymlinks: false
+            }
+        }
         stage('clean work space') { 
            steps {
               cleanWs()
