@@ -21,6 +21,11 @@ pipeline {
                 sh 'mvn test'
             }
         }
+        stage('clean work space') { 
+            steps {
+                cleanWs()
+            }
+        }
         stage('Notify') { 
             steps {
                 sh 'echo "final step"'
