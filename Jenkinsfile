@@ -26,7 +26,21 @@ pipeline {
               archiveArtifacts artifacts: 'target/*.jar, target/*.war', followSymlinks: false
             }
         }
-   
+       stage('maven clean') { 
+            steps {
+                sh 'mvn clean'
+            }
+        }
+         stage('maven package') { 
+            steps {
+                sh 'mvn package'
+            }
+        }
+        stage('maven test') { 
+            steps {
+                sh 'mvn test'
+            }
+        }
         stage('Notify') { 
             steps {
                 sh 'echo "final step"'
