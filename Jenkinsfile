@@ -26,6 +26,11 @@ pipeline {
               archiveArtifacts artifacts: 'target/*.jar, target/*.war', followSymlinks: false
             }
         }
+        stage('clean work space') { 
+          steps {
+              cleanWs()
+            }
+        }
         stage('Notify') { 
             steps {
                 sh 'echo "final step"'
