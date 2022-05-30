@@ -32,6 +32,11 @@ pipeline {
                 sh 'mvn verify'
             }
         }
+        stage('maven clean') { 
+            steps {
+                sh 'mvn clean'
+            }
+        }
         stage('Archive') { 
            steps {
               archiveArtifacts artifacts: 'target/*.jar, target/*.war', followSymlinks: false
