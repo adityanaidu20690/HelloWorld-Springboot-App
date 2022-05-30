@@ -11,6 +11,12 @@ pipeline {
                 sh 'mvn clean'
             }
         }
+         stage('maven validate') { 
+            steps {
+                sh 'mvn validate'
+            }
+        }
+
         stage('maven package') { 
             steps {
                 sh 'mvn package'
@@ -19,6 +25,11 @@ pipeline {
         stage('maven test') { 
             steps {
                 sh 'mvn test'
+            }
+        }
+         stage('maven verify') { 
+            steps {
+                sh 'mvn verify'
             }
         }
         stage('Archive') { 
