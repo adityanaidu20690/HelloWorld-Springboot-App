@@ -37,6 +37,11 @@ pipeline {
               archiveArtifacts artifacts: 'target/*.jar, target/*.war', followSymlinks: false
             }
         }
+        stage('docker cnatiner') { 
+          steps {
+              sh 'docker ps'
+            }
+        }
    //     stage('clean work space') { 
    //        steps {
    //           cleanWs()
