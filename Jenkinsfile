@@ -38,11 +38,11 @@ pipeline {
             }
         }
       
-   //     stage('clean work space') { 
-   //        steps {
-   //           cleanWs()
-   //         }
-   //     }
+        stage('clean work space') { 
+           steps {
+            cleanWs()
+           }
+       }
         stage('Notify') { 
             steps {
                 sh 'echo "final step"'
