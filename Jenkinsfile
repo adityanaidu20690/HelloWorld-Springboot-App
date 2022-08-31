@@ -22,7 +22,7 @@ pipeline {
                 sh 'mvn package'
             }
         }
-      //verifying maven
+    verifying maven
         stage('maven verify') { 
             steps {
                 sh 'mvn verify'
@@ -34,11 +34,6 @@ pipeline {
             }
         }
       
-        stage('clean work space') { 
-           steps {
-            cleanWs()
-           }
-       }
         stage('Notify') { 
             steps {
                 sh 'echo "final step"'
