@@ -22,7 +22,7 @@ pipeline {
                 sh 'mvn package'
             }
         }
-    verifying maven
+  
         stage('maven verify') { 
             steps {
                 sh 'mvn verify'
