@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('git clone') {
+            steps {
+                git credentialsId: '42828d20-87a1-40f8-a843-2bf65fdcf5cf', url: 'https://github.com/adityanaidu20690/game-of-life.git'
+                //git credentialsId: '42828d20-87a1-40f8-a843-2bf65fdcf5cf', url: 'https://github.com/adityanaidu20690/HelloWorld-Springboot-App.git'
+            }
+        }
+        stage('maven compile') {
+            steps {
+                sh 'mvn compile'
+            }
+        }
+         stage('maven package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+        stage('maven test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage('maven pack') {
+            agent{label 'linuxslave'}
+            steps {
+                git credentialsId: '42828d20-87a1-40f8-a843-2bf65fdcf5cf', url: 'https://github.com/adityanaidu20690/game-of-life.git'
+                sh 'mvn package'
+            }
+        }
+    }
+}
