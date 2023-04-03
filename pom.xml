@@ -45,4 +45,16 @@
 		</dependency> -->
 
 	</dependencies>
+	<distributionManagement>
+    <repository>
+        <id>addydevops</id>
+        <name>release softx</name>
+        <url>http://54.86.68.96:8081/repository/addydevops-release/</url>
+    </repository>
+    <snapshotRepository>
+        <id>addydevops</id>
+        <name>snapshot softx</name>
+        <url>http://54.86.68.96:8081/repository/addydevops-snapshot/</url>
+    </snapshotRepository>
+</distributionManagement>
 </project>
